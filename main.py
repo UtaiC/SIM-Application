@@ -44,10 +44,12 @@ except ImportError as e:
 URL_PO = "https://yqljvjfffrthnlbyitfw.supabase.co/rest/v1/po_records"
 URL_RFQ = "https://yqljvjfffrthnlbyitfw.supabase.co/rest/v1/rfq_records"
 URL_VISIT = "https://yqljvjfffrthnlbyitfw.supabase.co/rest/v1/visit_records"
-SUPABASE_KEY ="sb_publishable_rNgqlUJmdHcd215rP_6T3Q_P8uW-X23"
+
+SUPABASE_KEY = "sb_publishable_rNgqlUJmdHcd215rP_6T3Q_P8uW-X23"
+
 HEADERS = {
     "apikey": SUPABASE_KEY,
-    "Authorization": "Bearer sb_secret_TfzEalDLlSQ8fvrrAuPUXg_JZeZAFLg",
+    "Authorization": f"Bearer {SUPABASE_KEY}",  # 👈 เปลี่ยนตรงนี้ให้ดึงจาก SUPABASE_KEY
     "Content-Type": "application/json",
     "Prefer": "return=representation"
 }
