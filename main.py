@@ -64,7 +64,25 @@ USER_DB = {
     "mold_admin": {"pwd": "mold2026", "role": "mold_planning", "name": "K.jack"},
     "mold_production": {"pwd": "prod_mold2026", "role": "mold_production", "name": "K.wat"}
 }
-
+# ==================================================
+# 2. HELPER FUNCTIONS (วางไว้ตรงนี้ครับ)
+# ==================================================
+def safe_fetch_data(url, headers, retries=3):
+    for i in range(retries):
+        try:
+            res = requests.get(url, headers=headers, timeout=10)
+            if res.status_code in [200, 201]:
+                data = res.json()
+                if isinstance(data, list) and len(data) > 0:
+                    return pd.DataFrame(data)
+                return pd.DataFrame()
+            elif res.status_code in [500, 502, 503, 504]:
+                time.sleep(3)
+        except Exception:
+            time.sleep(3)
+            
+    st.warning("⚠️ ระบบฐานข้อมูลกำลังเริ่มต้น (กำลังตื่น) กรุณากด Refresh หน้าเว็บอีกครั้งในอีก 1-2 นาทีครับ")
+    return pd.DataFrame()
 st.set_page_config(page_title="SIM Master 2026", layout="wide")
 
 # --- LOGIN LOGIC ---
