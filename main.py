@@ -44,9 +44,14 @@ except ImportError as e:
 URL_PO = "https://yqljvjfffrthnlbyitfw.supabase.co/rest/v1/po_records"
 URL_RFQ = "https://yqljvjfffrthnlbyitfw.supabase.co/rest/v1/rfq_records"
 URL_VISIT = "https://yqljvjfffrthnlbyitfw.supabase.co/rest/v1/visit_records"
+URL_CUSTOMERS = "https://yqljvjfffrthnlbyitfw.supabase.co/rest/v1/customers"
+
+# 🔑 นำ anon public key (ขึ้นต้นด้วย eyJhb...) มาวางตรงนี้
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."  # <--- เอา anon key ที่ก๊อปมาจาก Supabase มาวางแทนตรงนี้ครับ
+
 HEADERS = {
-    "apikey": "sb_secret_TfzEalDLlSQ8fvrrAuPUXg_JZeZAFLg",
-    "Authorization": "Bearer sb_secret_TfzEalDLlSQ8fvrrAuPUXg_JZeZAFLg",
+    "apikey": SUPABASE_KEY,
+    "Authorization": f"Bearer {SUPABASE_KEY}",
     "Content-Type": "application/json",
     "Prefer": "return=representation"
 }
